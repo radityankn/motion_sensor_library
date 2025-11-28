@@ -41,7 +41,7 @@ void driver_spi_begin(spi_handle_t *handler, int ss_pin) {
     spi_object[handler->spi_number].setSCLK((int)handler->clk_pin);
     spi_object[handler->spi_number].setSSEL(ss_pin);
 
-    spi_object_settings[handler->spi_number] = SPISettings(handler->clk_speed, handler->data_order, handler->data_mode)
+    spi_object_settings[handler->spi_number] = SPISettings(handler->clk_speed, handler->data_order, handler->data_mode);
 
     spi_object[handler->spi_number].begin();
 }
