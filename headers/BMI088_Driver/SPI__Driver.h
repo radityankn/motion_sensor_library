@@ -14,13 +14,13 @@ typedef enum {
 } spi_number_t;
 
 typedef struct {
-    spi_number_t spi_number,
-    int clock_rate, 
-    int mosi_pin, 
-    int miso_pin, 
-    int clk_pin, 
-    BitOrder data_order, 
-    int data_mode
+    spi_number_t spi_number;
+    int clk_speed; 
+    int mosi_pin; 
+    int miso_pin; 
+    int clk_pin; 
+    BitOrder data_order; 
+    int data_mode;
 } spi_handle_t;
 
 void driver_spi_settings(spi_handle_t* handler, \
@@ -30,7 +30,7 @@ void driver_spi_settings(spi_handle_t* handler, \
                             int clk_pin, \
                             BitOrder data_order, \
                             int data_mode);
-void driver_spi_begin(spi_handle_t *handler, PinName ss_pin);
+void driver_spi_begin(spi_handle_t *handler, int ss_pin);
 void driver_spi_begin_transaction(spi_handle_t *handler);
 void driver_spi_end_transaction(spi_handle_t *handler);
 void driver_spi_end(spi_handle_t *handler);

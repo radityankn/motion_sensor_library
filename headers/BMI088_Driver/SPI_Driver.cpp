@@ -27,21 +27,21 @@ void driver_spi_settings(   spi_handle_t* handler, \
                             int data_mode) {
 
     handler->spi_number = peripheral_number;
-    handler->spi_clk_speed = clock_rate;
-    handler->spi_mosi_pin = mosi_pin;
-    handler->spi_miso_pin = miso_pin;
-    handler->spi_clk_pin = clk_pin;
-    handler->spi_data_order = data_order;
-    handler->spi_data_mode = data_mode;
+    handler->clk_speed = clock_rate;
+    handler->mosi_pin = mosi_pin;
+    handler->miso_pin = miso_pin;
+    handler->clk_pin = clk_pin;
+    handler->data_order = data_order;
+    handler->data_mode = data_mode;
 }
 
-void driver_spi_begin(spi_handle_t *handler, PinName ss_pin) {
-    spi_object[handler->spi_number].setMISO(handler->spi_miso_pin);
-    spi_object[handler->spi_number].setMOSI(handler->spi_mosi_pin);
-    spi_object[handler->spi_number].setSCLK(handler->sclk_pin);
+void driver_spi_begin(spi_handle_t *handler, int ss_pin) {
+    spi_object[handler->spi_number].setMISO((int)handler->miso_pin);
+    spi_object[handler->spi_number].setMOSI((int)handler->mosi_pin);
+    spi_object[handler->spi_number].setSCLK((int)handler->clk_pin);
     spi_object[handler->spi_number].setSSEL(ss_pin);
 
-    spi_object_settings[handler->spi_number] = SPISettings(handler->spi_clk_speed, handler->spi_data_order, handler->spi_data_mode)
+    spi_object_settings[handler->spi_number] = SPISettings(handler->clk_speed, handler->data_order, handler->data_mode)
 
     spi_object[handler->spi_number].begin();
 }
@@ -67,7 +67,7 @@ void driver_spi_end(spi_handle_t *handler) {
 }
 
 // Various setup functions
-
+/*
 void arduino_spi_set_bit_order(BitOrder data_order) {
     __spi_data_order = data_order;
 }
@@ -75,3 +75,4 @@ void arduino_spi_set_bit_order(BitOrder data_order) {
 void arduino_spi_set_data_mode(uint8_t data_mode) {
     __spi_data_mode = data_mode;
 }
+*/
