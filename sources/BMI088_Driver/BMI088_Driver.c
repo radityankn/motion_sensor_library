@@ -1,5 +1,5 @@
 #include "BMI088_Driver.h"
-#include "SPI.h"
+#include "SPI_Arduino.h"
 
 int bmi088_spi_init(bmi088_spi_handler_t *handler, bmi088_spi_gyro_config_t gyro_config, bmi088_spi_acc_config_t acc_config) {
 
